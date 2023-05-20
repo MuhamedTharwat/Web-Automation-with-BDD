@@ -1,5 +1,6 @@
 package base;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,7 +18,7 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
-public class BaseClass {
+public class BaseClass extends AbstractTestNGCucumberTests {
     public static WebDriver driver;
     public static Properties properties;
 
@@ -54,6 +56,11 @@ public class BaseClass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(properties.getProperty("implicitWait"))));
         driver.get(properties.getProperty("url"));
+    }
+    @BeforeTest
+    public static void setUp(){
+        loadConfigurations();
+        launchWeb();
     }
 
 }
