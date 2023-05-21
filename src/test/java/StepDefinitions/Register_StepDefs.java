@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class Register_StepDefs  {
     HomePage homePageObj = new HomePage();
@@ -17,17 +18,25 @@ public class Register_StepDefs  {
         homePageObj.clickOnRegisterBtn();
     }
 
-    @When("user enter valid credentials {string} {string} {string} {string}")
+    @Given("user enter valid credentials {string} {string} {string} {string}")
     public void userEnterValidCredentials(String arg0, String arg1, String arg2, String arg3) {
         registerPageObj.fillRequiredFields(arg0,arg1,arg2,arg3);
     }
 
-    @And("click on register button")
+    @When("click on register button")
     public void clickOnRegisterButton() {
         registerPageObj.clickOnRegisterBtn();
     }
 
-    @Then("User Directed to profile page successfully")
-    public void userDirectedToProfilePageSuccessfully() {
+    @Then("verify Email Already exist message {string}")
+    public void userDirectedToProfilePageSuccessfully(String arg0) {
+        String result= registerPageObj.getEmailAlreadyExistMsg();
+        Assert.assertTrue(result.contains(arg0));
+    }
+
+    @Then("verify register completed message {string}")
+    public void verifyRegisterCompletedMessage(String arg0) {
+        String result = registerPageObj.getRegisterCompletedMsg();
+        Assert.assertTrue(result.contains(arg0));
     }
 }

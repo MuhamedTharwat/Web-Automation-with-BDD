@@ -11,4 +11,7 @@ public class Action extends BaseClass {
     public void type(By element, String text) {
         driver.findElement(element).sendKeys(text);
     }
+    public String getElementText (By element){
+        return driver.findElement(element).getText();
+    }
 }

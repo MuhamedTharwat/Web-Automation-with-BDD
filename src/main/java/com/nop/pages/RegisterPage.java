@@ -12,6 +12,8 @@ public class RegisterPage extends BaseClass {
     By passwordTxtBox = By.id("Password");
     By passwordConfirmTxtBox = By.id("ConfirmPassword");
     By registerBtn = By.id("register-button");
+    By registerCompletedMsg= By.xpath("//div[contains(text(),'Your registration completed')]");
+    By emailAlreadyExistMsg= By.xpath("//div[contains(@class,'error validation')]//*[contains(text(),'The specified email already exists')]");
 
     public void fillRequiredFields(String fName,String lName,String email ,String password ){
         action.type(firstNameTxtBox,fName);
@@ -23,4 +25,12 @@ public class RegisterPage extends BaseClass {
     public void clickOnRegisterBtn(){
         action.click(registerBtn);
     }
+    public String getRegisterCompletedMsg(){
+       return action.getElementText(registerCompletedMsg);
+    }
+    public String getEmailAlreadyExistMsg(){
+        return action.getElementText(emailAlreadyExistMsg);
+    }
+
+
 }
