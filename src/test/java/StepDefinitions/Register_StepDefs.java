@@ -39,4 +39,21 @@ public class Register_StepDefs  {
         String result = registerPageObj.getRegisterCompletedMsg();
         Assert.assertTrue(result.contains(arg0));
     }
+
+
+    @Then("verify {string} Required message {string}")
+    public void verifyRequiredMessage(String arg0, String arg1) {
+        if(arg0.contains("First Name")) {
+            String result = registerPageObj.getFirstNameRequiredMsg();
+            Assert.assertTrue(result.contains(arg1));
+        }
+        if(arg0.contains("Last Name")) {
+            String result = registerPageObj.getLastNameRequiredMsg();
+            Assert.assertTrue(result.contains(arg1));
+        }
+        if(arg0.contains("Password")) {
+            String result = registerPageObj.getPasswordRequiredMsg();
+            Assert.assertTrue(result.contains(arg1));
+        }
+    }
 }
