@@ -14,4 +14,7 @@ public class Action extends BaseClass {
     public String getElementText (By element){
         return driver.findElement(element).getText();
     }
+    public boolean elementExist(By element){
+        return driver.findElement(element).isDisplayed();
+    }
 }
