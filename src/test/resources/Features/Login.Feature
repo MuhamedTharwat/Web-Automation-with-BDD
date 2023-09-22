@@ -9,4 +9,4 @@ Feature: User Login
 
       Examples:
       |Email|Password|
-      |jigiko4865qa5aa@dekaps.com|P@ssw0rd|
+      |jigiko4865qa7a@dekaps.com|P@ssw0rd|
